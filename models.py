@@ -5,7 +5,7 @@ import json
 
 database_name = "trivia"
 # postgres:momo2000@localhost/trivia
-database_path = 'postgresql://pmfntrhnttltvp:9be387d47f3def84581a8852bff923ed3e100f085f298993986b27353edad0cf@ec2-3-212-75-25.compute-1.amazonaws.com:5432/ddq187v0lrs909'
+database_path = 'postgresql://postgres:momo2000@localhost/trivia'
 # pmfntrhnttltvp:9be387d47f3def84581a8852bff923ed3e100f085f298993986b27353edad0cf@ec2-3-212-75-25.compute-1.amazonaws.com:5432/ddq187v0lrs909
 
 
