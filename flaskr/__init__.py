@@ -10,6 +10,8 @@ from models import setup_db, Question, Category
 QUESTIONS_PER_PAGE = 10
 
 # adding pagination to the question
+
+
 def paginate_question(request, selection):
     page = request.args.get("page", 1, type=int)
     start = (page - 1) * QUESTIONS_PER_PAGE
@@ -22,7 +24,7 @@ def paginate_question(request, selection):
 
 def create_app(test_config=None):
     # create and configure the app
-    app = Flask(__name__, static_folder="frontend/build")
+    app = Flask(__name__, static_folder="../frontend/build")
     setup_db(app)
     # set up CORS allowing all the origins
     cors = CORS(app, resources={"/": {"origins": "*"}})
@@ -89,7 +91,8 @@ def create_app(test_config=None):
     def delete_question(question_id):
         try:
             # get the question using the id
-            question = Question.query.filter(Question.id == question_id).one_or_none()
+            question = Question.query.filter(
+                Question.id == question_id).one_or_none()
 
             # abort 404 if no question is found
             if question is None:
@@ -258,14 +261,16 @@ def create_app(test_config=None):
     @app.errorhandler(404)
     def not_found(error):
         return (
-            jsonify({"success": False, "error": 404, "message": "resource not found"}),
+            jsonify({"success": False, "error": 404,
+                    "message": "resource not found"}),
             404,
         )
 
     @app.errorhandler(422)
     def unprocessable(error):
         return (
-            jsonify({"success": False, "error": 422, "message": "unprocessable"}),
+            jsonify({"success": False, "error": 422,
+                    "message": "unprocessable"}),
             422,
         )
 
