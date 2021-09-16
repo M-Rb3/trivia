@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, abort, jsonify
 from flask.helpers import send_from_directory
 from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import random
 
 from models import setup_db, Question, Category
@@ -25,7 +25,7 @@ def paginate_question(request, selection):
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, static_folder="../frontend/build",
-                static_url_path='')
+                static_url_path='/')
     setup_db(app)
     # set up CORS allowing all the origins
     cors = CORS(app, resources={"/": {"origins": "*"}})
